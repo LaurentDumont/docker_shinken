@@ -26,8 +26,8 @@ RUN         su - shinken -c 'shinken --init' && \
                 su - shinken -c 'shinken install auth-htpasswd' && \
                 su - shinken -c 'shinken install sqlitedb' && \
                 su - shinken -c 'shinken install pickle-retention-file-scheduler' && \
-                su - shinken -c 'shinken install booster-nrpe'
-
+                su - shinken -c 'shinken install booster-nrpe' && \
+		su - shinken -c 'shinken install livestatus'
 # Install check_nrpe plugin
 ADD         nrpe-2.15.tar.gz /usr/src/
 RUN         cd /usr/src/nrpe-2.15/ && \
@@ -51,6 +51,7 @@ ADD         shinken/shinken.cfg /etc/shinken/shinken.cfg
 ADD         shinken/broker-master.cfg /etc/shinken/brokers/broker-master.cfg
 ADD         shinken/poller-master.cfg /etc/shinken/pollers/poller-master.cfg
 ADD         shinken/scheduler-master.cfg /etc/shinken/schedulers/scheduler-master.cfg
+ADD         shinken/livestatus.cfg /etc/shinken/modules/livestatus.cfg
 COPY        shinken/webui2.cfg /etc/shinken/modules/webui2.cfg
 COPY        shinken/webui2_worldmap.cfg /var/lib/shinken/modules/webui2/plugins/worldmap/plugin.cfg
 RUN         mkdir -p /etc/shinken/custom_configs /usr/local/custom_plugins && \
