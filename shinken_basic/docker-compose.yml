@@ -8,6 +8,7 @@ services:
     - "TZ=UTC"  # UTC can be replaced by any valid timezone.
     ports:
       - "80:80"
+      - "50000:50000"
     volumes:
        - ./custom_configs:/etc/shinken/custom_configs
        - ./extra_plugins:/usr/local/custom_plugins
