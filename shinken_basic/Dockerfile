@@ -75,6 +75,7 @@ ADD         supervisor/conf.d/* /etc/supervisor/conf.d/
 
 # Expost port 80 (nginx)
 EXPOSE  80
+EXPOSE 50000
 
 # Default docker process
 CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf", "-n"]
