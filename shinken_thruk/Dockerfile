@@ -1,6 +1,6 @@
 # Shinken Docker installation using pip (latest)
-FROM        debian:wheezy
-MAINTAINER  Rohit Gupta
+FROM        debian:jessie
+MAINTAINER  Laurent Dumont
 
 # Install Shinken, Nagios plugins, apache2 and supervisord
 RUN         apt-get update && apt-get install -y python-pip \
@@ -77,10 +77,6 @@ RUN         cd /usr/lib/nagios/plugins/ && \
                 chmod a+x * && \
                 chmod u+s check_apt restart_service check_ping check_icmp check_fping apt_update
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 2043980... replaces webui with webui2 and adds worldmap configuration
 # Define mountable directories
 VOLUME      ["/etc/shinken/custom_configs", "/usr/local/custom_plugins"]
 
