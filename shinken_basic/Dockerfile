@@ -27,6 +27,7 @@ RUN         su - shinken -c 'shinken --init' && \
                 su - shinken -c 'shinken install sqlitedb' && \
                 su - shinken -c 'shinken install pickle-retention-file-scheduler' && \
                 su - shinken -c 'shinken install booster-nrpe' && \
+		su - shinken -c 'shinken install logstore-sqlite' && \
 		su - shinken -c 'shinken install livestatus'
 # Install check_nrpe plugin
 ADD         nrpe-2.15.tar.gz /usr/src/
