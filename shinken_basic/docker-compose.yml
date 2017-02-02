@@ -12,3 +12,5 @@ services:
     volumes:
        - ./custom_configs:/etc/shinken/custom_configs
        - ./extra_plugins:/usr/local/custom_plugins
+    restart_policy:
+       condition: any
