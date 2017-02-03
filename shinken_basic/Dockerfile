@@ -10,6 +10,7 @@ RUN         apt-get update && apt-get install -y python-pip \
                 libsys-statistics-linux-perl \
                 nginx \
                 ntp \
+		python-influxdb \
                 libssl-dev \
                 python-crypto \
                 inotify-tools \
@@ -17,7 +18,7 @@ RUN         apt-get update && apt-get install -y python-pip \
                 apt-get -y autoremove && \
                 apt-get clean
 RUN         useradd --create-home shinken && \
-                pip install shinken influxdb-python pymongo>=3.0.3 requests arrow bottle==0.12.8 && \
+                pip install shinken pymongo>=3.0.3 requests arrow bottle==0.12.8 && \
                 update-rc.d -f shinken remove
 
 # Install shinken modules from shinken.io
