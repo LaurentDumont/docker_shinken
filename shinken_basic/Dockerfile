@@ -17,7 +17,7 @@ RUN         apt-get update && apt-get install -y python-pip \
                 apt-get -y autoremove && \
                 apt-get clean
 RUN         useradd --create-home shinken && \
-                pip install shinken pymongo>=3.0.3 requests arrow bottle==0.12.8 && \
+                pip install shinken influxdb-python pymongo>=3.0.3 requests arrow bottle==0.12.8 && \
                 update-rc.d -f shinken remove
 
 # Install shinken modules from shinken.io
@@ -28,7 +28,8 @@ RUN         su - shinken -c 'shinken --init' && \
                 su - shinken -c 'shinken install pickle-retention-file-scheduler' && \
                 su - shinken -c 'shinken install booster-nrpe' && \
 		su - shinken -c 'shinken install logstore-sqlite' && \
-		su - shinken -c 'shinken install livestatus'
+		su - shinken -c 'shinken install livestatus' && \
+		su - shinken -c 'shinken install mod-influxdb'
 # Install check_nrpe plugin
 ADD         nrpe-2.15.tar.gz /usr/src/
 RUN         cd /usr/src/nrpe-2.15/ && \
